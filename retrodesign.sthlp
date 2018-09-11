@@ -90,3 +90,17 @@ I hope this code is useful; it is distributed without any warranty. Note that I 
 
 {phang}Other example by Gelman and Carlin (2014, p.646): {p_end}
 {phang}{cmd:. retrodesign, delta(2) s(8.1)}{p_end}
+
+
+{marker results}{...}
+{title:Stored results}
+
+{pstd}
+{cmd:retrodesign} stores the following in {cmd:r()}:
+
+{synoptset 15 tabbed}{...}
+{p2col 5 15 19 2: Scalars}{p_end}
+{synopt:{cmd:r(power)}}power{p_end}
+{synopt:{cmd:r(typeS)}}Type-S error (in %){p_end}
+{synopt:{cmd:r(exaggeration)}}Type-M exaggeration ratio{p_end}
+{p2colreset}{...}
