@@ -41,4 +41,4 @@ The output generates the test's power, the Type-S error, and the Type-M exaggera
 
 ## Acknowledgments
 
-The code was directly adapted from Gelman and Carlin, but all errors are mine. No warranty that the code will work as intended. 
+The code was directly adapted from Gelman and Carlin, but all errors are mine. No warranty that the code will work as intended. Please let me know if you find errors! 
