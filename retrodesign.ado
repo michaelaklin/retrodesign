@@ -59,5 +59,10 @@ display "Power:             " %6.3f `power'
 display "Type (S) (%):      " %6.2f `typeS'
 display "Exaggeration (M):  " %6.2f `exaggeration'
 
+* Saving quantities in r()
+return scalar power = `power'
+return scalar typeS = `typeS'
+return scalar exaggeration = `exaggeration'
+
 restore
 end
