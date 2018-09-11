@@ -42,3 +42,7 @@ The output generates the test's power, the Type-S error, and the Type-M exaggera
 ## Acknowledgments
 
 The code was directly adapted from Gelman and Carlin, but all errors are mine. No warranty that the code will work as intended. Please let me know if you find errors! 
+
+## Reference
+
+Gelman, Andrew and John Carlin. 2014. "Beyond Power Calculations: Assessing Type S (Sign) and Type M (Magnitude) Errors" _Perspectives on Psychological Science_, Vol. 9(6) 641–651
