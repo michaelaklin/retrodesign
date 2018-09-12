@@ -16,12 +16,14 @@
 *	************************************************************************
 
 
-*! version 0.1  11sep2018  Michaël Aklin
 
-clear all
+*!	version 0.2  12sep2018  Michaël Aklin; added more output
+*!	version 0.1  11sep2018  Michaël Aklin
+
 capture program drop retrodesign
 
-program define retrodesign
+*	Starting the program
+program define retrodesign, rclass
 version 14
 syntax, delta(real) s(real) [alpha(real 0.05) nsim(integer 10000)]
 
@@ -32,11 +34,19 @@ drop _all
 * Run the function. Note that Stata doesn't have an 'inf' to mean infinity. 
 * Thus, I used a large number instead. This may explain discrepancies with 
 * the R version of this code.
+
+* Conditional on being significant
 local z = invttail(999999,`alpha'/2)
 local phi = ttail(999999,`z'-`delta'/`s')
 local plo = 1-ttail(999999,-`z'-`delta'/`s')
 local power = `phi' + `plo'
 local typeS = 100*`plo'/`power'
+
+* Conditional on being insignificant: take the right (left) side minus the bit
+* that is significant 
+local insig_phi = ttail(999999,-`delta'/`s')-`phi'
+local insig_plo = ttail(999999,`delta'/`s')- `plo'
+local insig_typeS = 100*`insig_plo'/(`insig_plo'+`insig_phi')
 
 * Simulations
 quiet set obs `nsim'
@@ -47,22 +57,43 @@ quiet sum absestimate
 local exaggeration = `r(mean)'/`delta' 
 
 * Display the results
+display "________________________________________________"
+display "		INPUT"
 display ""
-display "       INPUT"
-display "delta:        " %6.3f `delta'
-display "S.d.:         " %6.3f `s'
-display "alpha:        " %6.2f `alpha'
-display "Simulations:  " %6.0f `nsim'
+display "delta:         " %6.3f `delta'
+display "S.d.:          " %6.3f `s'
+display "alpha:         " %6.2f `alpha'
+display "Simulations:   " %6.0f `nsim'
 display ""
-display "       OUTPUT"
-display "Power:             " %6.3f `power'
-display "Type (S) (%):      " %6.2f `typeS'
-display "Exaggeration (M):  " %6.2f `exaggeration'
+display "________________________________________________"
+display "		OUTPUT"
+display ""
+display "Statistically insignificant (at alpha=`alpha' level):"
+display ""
+display "Pr(Correct sign) and insignificant:    " %6.3f `insig_phi'
+display "Pr(Wrong sign) and insignificant:      " %6.3f `insig_plo'
+display "Type S (%) (when insignificant):       " %6.2f `insig_typeS'
+display ""
+display "Statistically significant (at alpha=`alpha' level):"
+display ""
+display "Pr(Correct sign) and significant:      " %6.3f `phi'
+display "Pr(Wrong sign) and significant:        " %6.3f `plo'
+display "Power:                                 " %6.3f `power'
+display "Type S (%) (when significant):         " %6.2f `typeS'
+display "Exaggeration ratio (M):                " %6.2f `exaggeration'
+display ""
+display "________________________________________________"
+display "(See Gelman and Carlin (2014) for details)"
 
 * Saving quantities in r()
+return scalar phi = `phi'
+return scalar plo = `plo'
 return scalar power = `power'
 return scalar typeS = `typeS'
 return scalar exaggeration = `exaggeration'
+return scalar insig_phi = `insig_phi'
+return scalar insig_plo = `insig_plo'
+return scalar insig_typeS = `insig_typeS'
 
 restore
 end
