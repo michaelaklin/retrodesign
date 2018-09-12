@@ -43,7 +43,7 @@ _Addendum_: there exists another ado file computing Gelman and Carlin's type S a
 
 ## Acknowledgments
 
-Part of the code was directly adapted from Gelman and Carlin (who wrote it for R), but all errors are mine. No warranty that the code will work as intended. Please let me know if you find errors! 
+Part of the code was adapted from Gelman and Carlin (who wrote it for R), but all errors are mine. No warranty that the code will work as intended. Please let me know if you find errors! 
 
 ## Reference
 
