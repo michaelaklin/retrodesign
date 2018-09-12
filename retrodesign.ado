@@ -1,23 +1,24 @@
 
-*	************************************************************************
-* 	File-Name: 	retrodesign.ado
-*	Log-file:	na
-*	Date:  		09/11/2018
-*	Author: 	Michaël Aklin
-*	Purpose:   	Stata .ado file to implement Gelman and Carlin's Type S
-*				and Type M errors. 
-*				See:
-*				Gelman, Andrew and John Carlin. 2014. "Beyond Power 
-*				Calculations: Assessing Type S (Sign) and Type M (Magnitude) 
-*				Errors" Perspectives on Psychological Science, Vol. 9(6) 641–651
+*   ************************************************************************
+*   File-Name:  retrodesign.ado
+*   Author:     Michaël Aklin
+*   Link:       https://github.com/michaelaklin/retrodesign
+*   Purpose:    Stata .ado file to implement Gelman and Carlin's Type S
+*               and Type M errors. 
+*               See:
+*               Gelman, Andrew and John Carlin. 2014. "Beyond Power 
+*               Calculations: Assessing Type S (Sign) and Type M (Magnitude) 
+*               Errors" Perspectives on Psychological Science, Vol. 9(6) 641–651
 *				
-*	Example:
-*				retrodesign, delta(0.1) s(3.28) alpha(0.05) nsim(10000)
-*	************************************************************************
+*   Example:
+*               retrodesign, delta(0.1) s(3.28) alpha(0.05) nsim(10000)
+*   ************************************************************************
 
 
 
-*!	version 0.2  12sep2018  Michaël Aklin; added more output
+*!	version 0.2  12sep2018  Michaël Aklin; 
+*								retrodesign adds more output;
+*								prevents negative standard errors;
 *!	version 0.1  11sep2018  Michaël Aklin
 
 capture program drop retrodesign
@@ -25,7 +26,7 @@ capture program drop retrodesign
 *	Starting the program
 program define retrodesign, rclass
 version 14
-syntax, delta(real) s(real) [alpha(real 0.05) nsim(integer 10000)]
+syntax, delta(real) s(numlist >0 min=1 max=1) [alpha(real 0.05) nsim(integer 10000)]
 
 * Preserve and drop all (needed to expand the number of obs)
 preserve
