@@ -11,7 +11,7 @@
 {title:Title}
 
 {phang}
-{bf:retrodesign} {hline 2} Calculate Gelman and Carlin's (2014) type-S errors and type-M exaggeration ratios
+{bf:retrodesign} {hline 2} Calculate Gelman and Carlin's (2014) type-S errors and type-M exaggeration ratios and other quantities of interest defined in their article
 
 
 {marker syntax}{...}
@@ -40,7 +40,7 @@
 {title:Description}
 
 {pstd}
-{cmd:retrodesign} calculates type-S errors and type-M exaggeration ratios. See Gelman, Andrew and John Carlin. 2014. "Beyond Power Calculations: Assessing Type S (Sign) and Type M (Magnitude) Errors" {it:Perspectives on Psychological Science}, Vol. 9(6) 641–651. Note that Stata doesn't have an '{it:inf}' command to mean infinity, like R does. Thus, I used a large number as a placeholder instead. This may explain discrepancies with Gelman and Carlin's results when using their R code.
+{cmd:retrodesign} calculates type-S errors and type-M exaggeration ratios. In addition, it also provides several other quantities of interest, such as the power of a test or the likelihood of obtaining wrong and correct signs. For details, see Gelman, Andrew and John Carlin. 2014. "Beyond Power Calculations: Assessing Type S (Sign) and Type M (Magnitude) Errors" {it:Perspectives on Psychological Science}, Vol. 9(6) 641–651. Note that Stata doesn't have an '{it:inf}' command to mean infinity, like R does. Thus, I used a large number as a placeholder instead. This may explain discrepancies with Gelman and Carlin's results when using their R code.
 
 
 {marker options}{...}
@@ -68,10 +68,10 @@
 {title:Remarks}
 
 {pstd}
-The Stata code is adapted from Gelman and Carlin's own R script in the article's appendix -- but of course, all errors are mine. Please let me know if you find any error. 
+The Stata code is adapted from Gelman and Carlin's own R script in the article's appendix. I added a few quantities that may be of interest. Of course, all errors are mine. Please let me know if you find any mistake. 
 
 {pstd}
-I hope this code is useful; it is distributed without any warranty. Note that I declared {bf:retrodesign} as a Stata 14 command; I'm pretty sure it would work with earlier versions, but I wasn't able to check. If you run an earlier version, you could modify the ado file (replacing {it:version 14} with whatever version you use). But there is no warranty that it works.
+I hope this code is useful; it is distributed without any warranty. Note that I declared {bf:retrodesign} as a Stata 14 command; I am pretty sure it would work with earlier versions, but I was not able to check. If you run an earlier version, you could modify the ado file (replacing {it:version 14} with whatever version you use).
 
 
 {title:Author}
@@ -91,7 +91,6 @@ I hope this code is useful; it is distributed without any warranty. Note that I 
 {phang}Other example by Gelman and Carlin (2014, p.646): {p_end}
 {phang}{cmd:. retrodesign, delta(2) s(8.1)}{p_end}
 
-
 {marker results}{...}
 {title:Stored results}
 
@@ -100,7 +99,12 @@ I hope this code is useful; it is distributed without any warranty. Note that I 
 
 {synoptset 15 tabbed}{...}
 {p2col 5 15 19 2: Scalars}{p_end}
+{synopt:{cmd:r(phi)}}Pr(Correct sign and statistically significant){p_end}
+{synopt:{cmd:r(plo)}}Pr(Wrong sign and statistically significant){p_end}
 {synopt:{cmd:r(power)}}power{p_end}
-{synopt:{cmd:r(typeS)}}Type-S error (in %){p_end}
+{synopt:{cmd:r(typeS)}}Type-S error (in %), conditional on being significant{p_end}
 {synopt:{cmd:r(exaggeration)}}Type-M exaggeration ratio{p_end}
+{synopt:{cmd:r(insig_phi)}}Pr(Correct sign and statistically insignificant){p_end}
+{synopt:{cmd:r(insig_plo)}}Pr(Wrong sign and statistically insignificant){p_end}
+{synopt:{cmd:r(insig_typeS)}}Type-S error (in %), conditional on being insignificant{p_end}
 {p2colreset}{...}
