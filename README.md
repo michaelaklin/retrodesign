@@ -4,7 +4,7 @@ Implements Gelman and Carlin's (2014) retrodesign function in Stata
 
 ## Getting Started
 
-This project allows Stata users to compute Gelman and Carlin's Type-S and Type-M errors in Stata. 
+This project allows Stata users to compute Gelman and Carlin's Type-S and Type-M errors. 
 
 ### Prerequisites
 
@@ -24,14 +24,14 @@ with whatever version you use.
 
 See the help file for more information (_help retrodesign_). 
 
-To give an illustration on how to use the code: assuming a hypothesized effect of 0.1 and a standard error of 3.28 (numbers from Gelman and Carlin's original article), you would type:
+To give an illustration on how to use _retrodesign_: assuming a hypothesized effect of 0.1 and a standard error of 3.28 (numbers from Gelman and Carlin's original article), you would type:
 ```
 retrodesign, delta(0.1) s(3.28)
 ```
 
-Users can change the critical alpha value (which matters a lot; default is 0.05) as well as the number of observations for the simulation (which matters less within reasonable bounds; default is 10,000).
+Users can change the critical alpha value (which matters a lot; default is 0.05), the number of observations for the simulation (which matters less within reasonable bounds; default is 10,000), and the number of degrees of freedom (default is a large number).
 
-The output generates the test's power, the Type-S error, and the Type-M exaggeration rate. 
+The output generates the test's power, the likelihood of a Type-S error (in %), the Type-M exaggeration ratio, and a few other quantities of interest (which should be self-explanatory). 
 
 ## Author
 
@@ -39,7 +39,7 @@ The output generates the test's power, the Type-S error, and the Type-M exaggera
 
 ## Addendum
 
-_Addendum_: there exists another ado file computing Gelman and Carlin's type S and M errors. This ado, written by Daniel Klein, can be obtained with _ssc install rdesigni_. His code allows to run several tests at the same time, which is not feasible with _retrodesign_ (it is also much more elegant!). However, it does not produce all the quantities of interest mentioned by Gelman and Carlin.
+_Addendum_: there exists another ado file computing Gelman and Carlin's type S and M errors. This ado, written by Daniel Klein, can be obtained with _ssc install rdesigni_. His code allows to run several tests at the same time, which is not feasible with _retrodesign_ (his code is also much more elegant!). However, it does not produce all the quantities of interest mentioned by Gelman and Carlin.
 
 ## Acknowledgments
 
