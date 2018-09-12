@@ -1,11 +1,10 @@
 # retrodesign
+
 Implements Gelman and Carlin's (2014) retrodesign function in Stata
 
 ## Getting Started
 
 This project allows Stata users to compute Gelman and Carlin's Type-S and Type-M errors in Stata. 
-
-_Addendum_: I found out after writing this ado file that Daniel Klein also created a similar program (which can be obtained with _ssc install rdesigni_). His code allows to run several tests at the same time, which is not feasible with *retrodesign*. 
 
 ### Prerequisites
 
@@ -18,9 +17,8 @@ with whatever version you use.
 
 ### Installing
 
-1. Download the *retrodesign.ado* and *retrodesign.sthlp* files. 
-2. Type *personal* in Stata. You'll see where your personal ado folder is. For instance, it could look like _/Library/Application Support/Stata/ado/personal/_
-3. Move the two files to this folder. 
+1. Type *personal* in Stata. You'll see where your personal ado folder is. For instance, it could look like _/Library/Application Support/Stata/ado/personal/_
+2. Save the two files (*retrodesign.ado* and *retrodesign.sthlp*) in this folder. 
 
 ## Running the code
 
@@ -37,11 +35,15 @@ The output generates the test's power, the Type-S error, and the Type-M exaggera
 
 ## Author
 
-* Michaël Aklin - [GitHub page](https://github.com/michaelaklin)
+* Michaël Aklin (michael.aklin@gmail.com) - [GitHub page](https://github.com/michaelaklin)
+
+## Addendum
+
+_Addendum_: there exists another ado file computing Gelman and Carlin's type S and M errors. This ado, written by Daniel Klein, can be obtained with _ssc install rdesigni_. His code allows to run several tests at the same time, which is not feasible with _retrodesign_ (it is also much more elegant!). However, it does not produce all the quantities of interest mentioned by Gelman and Carlin.
 
 ## Acknowledgments
 
-The code was directly adapted from Gelman and Carlin, but all errors are mine. No warranty that the code will work as intended. Please let me know if you find errors! 
+Part of the code was directly adapted from Gelman and Carlin (who wrote it for R), but all errors are mine. No warranty that the code will work as intended. Please let me know if you find errors! 
 
 ## Reference
 
