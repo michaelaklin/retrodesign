@@ -31,6 +31,7 @@
 {syntab:Optional}
 {synopt:{opt alpha(#)}}critical alpha value; default is {cmd:0.05}{p_end}
 {synopt:{opt nsim(#)}}number of simulations; default is {cmd:10,000}{p_end}
+{synopt:{opt df(#)}}number of degrees of freedom; default is a large value{p_end}
 {synoptline}
 {p2colreset}{...}
 {p 4 6 2}
@@ -60,7 +61,10 @@
 {opt alpha(#)} is the critical alpha value. Default is 0.05.
 
 {phang}
-{opt nsim(#)} is the number of simulations used to generate the quantities of interest. Default is 10,000.
+{opt nsim(#)} is the number of simulations used to generate the quantities of interest. Default is 10,000. Note that using values that are too small can lead to error messages.
+
+{phang}
+{opt df(#)} is the number of degrees of freedom. Default is a large value (Stata does not deal with infinity like R does).
 
 
 
@@ -99,6 +103,11 @@ I hope this code is useful; it is distributed without any warranty. Note that I 
 
 {synoptset 15 tabbed}{...}
 {p2col 5 15 19 2: Scalars}{p_end}
+{synopt:{cmd:r(delta)}}Hypothesized effect{p_end}
+{synopt:{cmd:r(s)}}Hypothesized standard error of the effect{p_end}
+{synopt:{cmd:r(alpha)}}Alpha significance level{p_end}
+{synopt:{cmd:r(nsim)}}Number of simulations{p_end}
+{synopt:{cmd:r(df)}}Degrees of freedom{p_end}
 {synopt:{cmd:r(phi)}}Pr(Correct sign and statistically significant){p_end}
 {synopt:{cmd:r(plo)}}Pr(Wrong sign and statistically significant){p_end}
 {synopt:{cmd:r(power)}}power{p_end}
