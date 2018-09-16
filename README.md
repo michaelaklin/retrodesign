@@ -17,8 +17,10 @@ with whatever version you use.
 
 ### Installing
 
-1. Type *personal* in Stata. You'll see where your personal ado folder is. For instance, it could look like _/Library/Application Support/Stata/ado/personal/_
+1. Type *personal* in Stata. You'll see where your personal ado folder is. For instance, it could look like _/Users/YOURNAME/Library/Application Support/Stata/ado/personal/_
 2. Save the two files (*retrodesign.ado* and *retrodesign.sthlp*) in this folder. 
+
+On Mac, access to the library is sometimes protected. To get access to it, open a finder window, and press Command+Shift+G and hit enter. You'll then be able to put these two files in your _personal_ folder. 
 
 ## Running the code
 
